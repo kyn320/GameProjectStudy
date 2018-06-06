@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody ri;
     Transform tr;
 
+    public GameObject addScoreEffect;
+
     float degree = 0;
 
     private void Awake()
@@ -43,6 +45,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         GameManager.instance.AddScore();
+        Instantiate(addScoreEffect, tr.position, Quaternion.Euler(-90,0,0));
         other.gameObject.SetActive(false);
     }
 
